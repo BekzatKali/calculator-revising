@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    /* background-color: antiquewhite; */
+    background-color: rgba(157, 181, 228, 0.426);
+}
+#grid-holder {
+    
+    grid-template-areas: 
+    "clear clear clearingSymbols divide"
+    "seven eight nine multiply"
+    'four five six subtract'
+    'one two three add'
+    'zero zero decimal equals'
+    ;
+}
+#holder-calc {
+    border: 1px solid black;
+    border-radius: 8px;
+}
+#one {
+    grid-area: one;
+}
+#two {
+    grid-area: two;
+}
+#three {
+    grid-area: three;
+}
+#four {
+    grid-area: four;
+}
+#five {
+    grid-area: five;
+}
+#six {
+    grid-area: six;
+}
+#seven {
+    grid-area: seven;
+}
+#eight {
+    grid-area: eight;
+}
+#nine {
+    grid-area: nine;
+}
+#zero {
+    grid-area: zero;
+}
+#add {
+    grid-area: add;
+}
+#subtract {
+    grid-area: subtract;
+}
+#multiply {
+    grid-area: multiply;
+}
+#divide {
+    grid-area: divide;
+}
+#decimal {
+    grid-area: decimal;
+}
+#equals {
+    grid-area: equals;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+#clear {
+    grid-area: clear;
+}
+#clearingSymbols {
+    grid-area: clearingSymbols;
+}
