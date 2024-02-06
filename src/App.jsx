@@ -9,38 +9,44 @@ function App() {
 
   const handleNumbers = (value) => {
     const lastChat = calculatorData[calculatorData.length - 1];
+    if (input !== 'DIGIT LIMIT MET') {
 
-    if (input.includes('.') && value && lastChat == '0') {
-      setInput(`${input}${value}`)
-      setCalculatorData(`${calculatorData}${value}`)
-    } else {
-      if (calculatorData && calculatorData.includes('+' || '-' || '*' || '/') && lastChat == '0' && value != '0') {
-        setInput(`${value}`)
-        setCalculatorData(calculatorData.slice(0, -1) + value)
+      if (input.includes('.') && value && lastChat == '0') {
+        setInput(`${input}${value}`)
+        setCalculatorData(`${calculatorData}${value}`)
       } else {
-        if (calculatorData.includes('=') && value) {
+        if (calculatorData && calculatorData.includes('+' || '-' || '*' || '/') && lastChat == '0' && value != '0') {
           setInput(`${value}`)
-          setCalculatorData(`${value}`)
-      } else {
-        if (input == '0' && value == '0') {
-          setInput(`${input}`)
-          setCalculatorData(`${calculatorData}`)
-        } else if (value == '0' && lastChat == '0') {
-          setInput(`${input}${value}`)
-          setCalculatorData(`${calculatorData}${value}`)
+          setCalculatorData(calculatorData.slice(0, -1) + value)
         } else {
-          if (input === '0') {
+          if (calculatorData.includes('=') && value) {
             setInput(`${value}`)
             setCalculatorData(`${value}`)
+        } else {
+          if (input == '0' && value == '0') {
+            setInput(`${input}`)
+            setCalculatorData(`${calculatorData}`)
+          } else if (value == '0' && lastChat == '0') {
+            setInput(`${input}${value}`)
+            setCalculatorData(`${calculatorData}${value}`)
           } else {
-            const firstOperator = operators.includes(input[0])
-            {firstOperator ? setInput(`${value}`) : setInput(`${input}${value}`)}
-            setCalculatorData(`${calculatorData}${value}`) 
+            if (input === '0') {
+              setInput(`${value}`)
+              setCalculatorData(`${value}`)
+            } else if (input.length === 22 && input.split('').every(char => typeof parseInt(char) === 'number')) {
+              setInput('DIGIT LIMIT MET')
+            } else {
+              const firstOperator = operators.includes(input[0])
+              {firstOperator ? setInput(`${value}`) : setInput(`${input}${value}`)}
+              setCalculatorData(`${calculatorData}${value}`) 
+            }
           }
+        } 
         }
-      } 
       }
+
     }
+    
   }
 
   const clearing = () => {
